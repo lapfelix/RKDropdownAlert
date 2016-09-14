@@ -146,102 +146,108 @@ NSString *DEFAULT_TITLE;
 //%%% shows all the default stuff
 +(void)show
 {
-    [[self alertView]title:DEFAULT_TITLE message:nil backgroundColor:nil textColor:nil time:-1];
+    [[self alertView]title:DEFAULT_TITLE message:nil backgroundColor:nil textColor:nil time:-1  completionHandler:nil];
 }
 
 +(void)title:(NSString*)title
 {
-    [[self alertView]title:title message:nil backgroundColor:nil textColor:nil time:-1];
+    [[self alertView]title:title message:nil backgroundColor:nil textColor:nil time:-1  completionHandler:nil];
 }
 
 +(void)title:(NSString*)title time:(NSInteger)seconds
 {
-    [[self alertView]title:title message:nil backgroundColor:nil textColor:nil time:seconds];
+    [[self alertView]title:title message:nil backgroundColor:nil textColor:nil time:seconds completionHandler:nil];
 }
 
 +(void)title:(NSString*)title backgroundColor:(UIColor*)backgroundColor textColor:(UIColor*)textColor
 {
-    [[self alertView]title:title message:nil backgroundColor:backgroundColor textColor:textColor time:-1];
+    [[self alertView]title:title message:nil backgroundColor:backgroundColor textColor:textColor time:-1 completionHandler:nil];
 }
 
 +(void)title:(NSString*)title backgroundColor:(UIColor*)backgroundColor textColor:(UIColor*)textColor time:(NSInteger)seconds
 {
-    [[self alertView]title:title message:nil backgroundColor:backgroundColor textColor:textColor time:seconds];
+    [[self alertView]title:title message:nil backgroundColor:backgroundColor textColor:textColor time:seconds
+  completionHandler:nil];
 }
 
 +(void)title:(NSString*)title message:(NSString*)message
 {
-    [[self alertView]title:title message:message backgroundColor:nil textColor:nil time:-1];
+    [[self alertView]title:title message:message backgroundColor:nil textColor:nil time:-1  completionHandler:nil];
 }
 
 +(void)title:(NSString*)title message:(NSString*)message time:(NSInteger)seconds
 {
-    [[self alertView]title:title message:message backgroundColor:nil textColor:nil time:seconds];
+    [[self alertView]title:title message:message backgroundColor:nil textColor:nil time:seconds
+  completionHandler:nil];
 }
 
 +(void)title:(NSString*)title message:(NSString*)message backgroundColor:(UIColor*)backgroundColor textColor:(UIColor*)textColor
 {
-    [[self alertView]title:title message:message backgroundColor:backgroundColor textColor:textColor time:-1];
+    [[self alertView]title:title message:message backgroundColor:backgroundColor textColor:textColor time:-1  completionHandler:nil];
 }
 
 +(void)title:(NSString*)title message:(NSString*)message backgroundColor:(UIColor*)backgroundColor textColor:(UIColor*)textColor time:(NSInteger)seconds
 {
-    [[self alertView]title:title message:message backgroundColor:backgroundColor textColor:textColor time:seconds];
+    [[self alertView]title:title message:message backgroundColor:backgroundColor textColor:textColor time:seconds
+  completionHandler:nil];
 }
 
 
 
 +(void)showWithDelegate:(id<RKDropdownAlertDelegate>)delegate
 {
-    [[self alertViewWithDelegate:delegate]title:DEFAULT_TITLE message:nil backgroundColor:nil textColor:nil time:-1];
+    [[self alertViewWithDelegate:delegate]title:DEFAULT_TITLE message:nil backgroundColor:nil textColor:nil time:-1  completionHandler:nil];
 }
 
 +(void)title:(NSString*)title delegate:(id<RKDropdownAlertDelegate>)delegate
 {
-    [[self alertViewWithDelegate:delegate]title:title message:nil backgroundColor:nil textColor:nil time:-1];
+    [[self alertViewWithDelegate:delegate] title:title message:nil backgroundColor:nil textColor:nil time:-1 completionHandler:nil];
 }
 
 +(void)title:(NSString*)title time:(NSInteger)seconds delegate:(id<RKDropdownAlertDelegate>)delegate
 {
-    [[self alertViewWithDelegate:delegate]title:title message:nil backgroundColor:nil textColor:nil time:seconds];
+    [[self alertViewWithDelegate:delegate]title:title message:nil backgroundColor:nil textColor:nil time:seconds
+  completionHandler:nil];
 }
 
 +(void)title:(NSString*)title backgroundColor:(UIColor*)backgroundColor textColor:(UIColor*)textColor delegate:(id<RKDropdownAlertDelegate>)delegate
 {
-    [[self alertViewWithDelegate:delegate]title:title message:nil backgroundColor:backgroundColor textColor:textColor time:-1];
+    [[self alertViewWithDelegate:delegate]title:title message:nil backgroundColor:backgroundColor textColor:textColor time:-1  completionHandler:nil];
 }
 
 +(void)title:(NSString*)title backgroundColor:(UIColor*)backgroundColor textColor:(UIColor*)textColor time:(NSInteger)seconds delegate:(id<RKDropdownAlertDelegate>)delegate
 {
-    [[self alertViewWithDelegate:delegate]title:title message:nil backgroundColor:backgroundColor textColor:textColor time:seconds];
+    [[self alertViewWithDelegate:delegate]title:title message:nil backgroundColor:backgroundColor textColor:textColor time:seconds
+  completionHandler:nil];
 }
 
 +(void)title:(NSString*)title message:(NSString*)message delegate:(id<RKDropdownAlertDelegate>)delegate
 {
-    [[self alertViewWithDelegate:delegate]title:title message:message backgroundColor:nil textColor:nil time:-1];
+    [[self alertViewWithDelegate:delegate]title:title message:message backgroundColor:nil textColor:nil time:-1  completionHandler:nil];
 }
 
 +(void)title:(NSString*)title message:(NSString*)message time:(NSInteger)seconds delegate:(id<RKDropdownAlertDelegate>)delegate
 {
-    [[self alertViewWithDelegate:delegate]title:title message:message backgroundColor:nil textColor:nil time:seconds];
+    [[self alertViewWithDelegate:delegate]title:title message:message backgroundColor:nil textColor:nil time:seconds
+  completionHandler:nil];
 }
 
 +(void)title:(NSString*)title message:(NSString*)message backgroundColor:(UIColor*)backgroundColor textColor:(UIColor*)textColor delegate:(id<RKDropdownAlertDelegate>)delegate
 {
-    [[self alertViewWithDelegate:delegate]title:title message:message backgroundColor:backgroundColor textColor:textColor time:-1];
+    [[self alertViewWithDelegate:delegate]title:title message:message backgroundColor:backgroundColor textColor:textColor time:-1  completionHandler:nil];
 }
 
 +(void)title:(NSString*)title message:(NSString*)message backgroundColor:(UIColor*)backgroundColor textColor:(UIColor*)textColor time:(NSInteger)seconds delegate:(id<RKDropdownAlertDelegate>)delegate
 {
-    [[self alertViewWithDelegate:delegate]title:title message:message backgroundColor:backgroundColor textColor:textColor time:seconds];
+    [[self alertViewWithDelegate:delegate]title:title message:message backgroundColor:backgroundColor textColor:textColor time:seconds
+  completionHandler:nil];
 }
 
 +(void)dismissAllAlert{
     [[NSNotificationCenter defaultCenter] postNotificationName:RKDropdownAlertDismissAllNotification object:nil];
 }
 
--(void)title:(NSString*)title message:(NSString*)message backgroundColor:(UIColor*)backgroundColor textColor:(UIColor*)textColor time:(NSInteger)seconds
-{
+-(void)title:(NSString*)title message:(NSString*)message backgroundColor:(UIColor*)backgroundColor textColor:(UIColor*)textColor time:(NSInteger)seconds completionHandler:(void (^)(void))completionBlock {
     NSInteger time = seconds;
     titleLabel.text = title;
     
@@ -287,12 +293,14 @@ NSString *DEFAULT_TITLE;
         CGRect frame = self.frame;
         frame.origin.y = 0;
         self.frame = frame;
+    } completion:^(BOOL finished) {
+        if (completionBlock != nil) {
+            completionBlock();
+        }
     }];
     
     [self performSelector:@selector(viewWasTapped:) withObject:self afterDelay:time+ANIMATION_TIME];
 }
-
-
 
 
 -(BOOL)messageTextIsOneLine

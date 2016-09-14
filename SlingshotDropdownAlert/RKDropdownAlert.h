@@ -54,6 +54,7 @@ extern NSString *const RKDropdownAlertDismissAllNotification;
 +(void)title:(NSString*)title message:(NSString*)message time:(NSInteger)seconds;
 +(void)title:(NSString*)title message:(NSString*)message backgroundColor:(UIColor*)backgroundColor textColor:(UIColor*)textColor;
 +(void)title:(NSString*)title message:(NSString*)message backgroundColor:(UIColor*)backgroundColor textColor:(UIColor*)textColor time:(NSInteger)seconds;
++(void)title:(NSString*)title message:(NSString*)message backgroundColor:(UIColor*)backgroundColor textColor:(UIColor*)textColor time:(NSInteger)seconds completionHandler:(void (^)(void))completionBlock;
 
 +(void)showWithDelegate:(id<RKDropdownAlertDelegate>)delegate;
 +(void)title:(NSString*)title delegate:(id<RKDropdownAlertDelegate>)delegate;
@@ -73,6 +74,6 @@ extern NSString *const RKDropdownAlertDismissAllNotification;
 @property BOOL isShowing;
 @property id<RKDropdownAlertDelegate> delegate;
 
--(void)title:(NSString*)title message:(NSString*)message backgroundColor:(UIColor*)backgroundColor textColor:(UIColor*)textColor time:(NSInteger)seconds;
+-(void)title:(NSString*)title message:(NSString*)message backgroundColor:(UIColor*)backgroundColor textColor:(UIColor*)textColor time:(NSInteger)seconds completionHandler:(void (^)(void))completionBlock;
 
 @end
